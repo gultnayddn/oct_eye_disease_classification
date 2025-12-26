@@ -6,75 +6,113 @@ Bu proje, Optik Koherens Tomografi (OCT) görüntülerinden retina hastalıklar�
 
 ## 📌 Proje Konusu ve Seçilme Gerekçesi
 
-Retina hastalıkları (CNV, DME, DRUSEN) erken teşhis edilmediği takdirde kalıcı görme kaybına yol açabilmektedir. OCT görüntüleme, göz hastalıklarının teşhisinde yaygın olarak kullanılan, invaziv olmayan bir yöntemdir.
+Bu projenin konusu, Optik Koherens Tomografi (OCT) görüntüleri kullanılarak retina hastalıklarının derin öğrenme tabanlı Konvolüsyonel Sinir Ağları (CNN) ile otomatik olarak sınıflandırılmasıdır.
 
-Bu projede, OCT görüntülerinin manuel olarak incelenmesi yerine, derin öğrenme tabanlı bir sistem geliştirilerek:
-- Tanı sürecinin hızlandırılması
-- Uzmanlara destek olunması
-- Hata oranlarının azaltılması
+Retina hastalıkları, dünya genelinde görme kaybının en yaygın nedenleri arasında yer almaktadır. Özellikle Koroidal Neovaskülarizasyon (CNV), Diyabetik Makula Ödemi (DME) ve Drusen gibi hastalıklar erken teşhis edilmediğinde kalıcı görme kaybına yol açabilmektedir. OCT görüntüleme yöntemi, retina tabakalarının yüksek çözünürlüklü kesitsel görüntülerini sağlayarak bu hastalıkların teşhisinde önemli bir rol oynamaktadır.
 
-amaçlanmıştır.
+Bu proje, hem sağlık alanında gerçek bir probleme çözüm sunması, hem de CNN tabanlı görüntü işleme tekniklerinin uygulanabilirliğini göstermesi açısından seçilmiştir. Ayrıca proje, derin öğrenmenin teorik bilgisinin pratik bir uygulama ile pekiştirilmesini hedeflemektedir.
 
 ---
 
 ## 📚 Literatür Özeti (İlgili Çalışmalar)
 
-Literatürde OCT görüntülerinin sınıflandırılması için sıklıkla CNN tabanlı mimariler kullanılmaktadır. VGG, ResNet ve DenseNet gibi modeller yüksek doğruluk sağlasa da hesaplama maliyetleri yüksektir.
+Son yıllarda derin öğrenme yöntemleri, tıbbi görüntü analizi alanında yaygın olarak kullanılmaktadır. Literatürde OCT görüntülerinden retina hastalıklarının tespiti için VGG, ResNet, Inception ve MobileNet gibi CNN mimarilerinin başarıyla uygulandığı birçok çalışma bulunmaktadır.
 
-Bu projede **MobileNetV2** mimarisi tercih edilmiştir çünkü:
-- Daha az parametreye sahiptir
-- Daha hızlıdır
-- CPU üzerinde çalışmaya daha uygundur
-- Yeterli doğruluk sağlar
+Bu çalışmalar, derin öğrenme modellerinin uzman hekimlere yardımcı olabilecek karar destek sistemleri olarak kullanılabileceğini göstermektedir. Otomatik sistemler, özellikle yoğun hasta sayısına sahip sağlık kuruluşlarında erken teşhis sürecini hızlandırarak klinik iş yükünü azaltabilir.
 
-Bu yönleriyle gerçek dünya uygulamaları için daha verimli bir yaklaşımdır.
+Bu bağlamda, seçilen konu hem akademik olarak güncel, hem de toplumsal ve klinik açıdan yüksek öneme sahip bir problem alanını kapsamaktadır.
 
 ---
 
 ## 📊 Veri Seti
 
-- **Veri Seti Adı:** OCT2017
-- **Kaynak:** Kaggle
-- **Toplam Görüntü Sayısı:** ~108.000
-- **Sınıflar:**
-  - CNV (Choroidal Neovascularization)
-  - DME (Diabetic Macular Edema)
-  - DRUSEN
-  - NORMAL
+Projede kullanılan veri seti, Kaggle platformunda yayımlanan OCT2017 veri setidir. Bu veri seti, binlerce gerçek hasta OCT görüntüsünden oluşmaktadır ve literatürde yaygın olarak kullanılmaktadır.
 
-Veri seti eğitim, doğrulama ve test olarak ayrılmıştır. Veri setinin boyutunun büyük olması nedeniyle GitHub reposuna eklenmemiştir.
+Veri Seti Özellikleri:
+
+Toplam 80.000+ eğitim görüntüsü
+
+4 sınıf:
+
+CNV (Koroidal Neovaskülarizasyon)
+
+DME (Diyabetik Makula Ödemi)
+
+DRUSEN
+
+NORMAL
+
+Ayrılmış train / validation / test klasör yapısı
+
+Veri setinin büyük olması, derin öğrenme modellerinin genelleme yeteneğini artırmakta ve projenin akademik güvenilirliğini yükseltmektedir.
 
 ---
 
 ## ⚙️ Kullanılan Yöntem ve Yaklaşım
 
-- Konvolüsyonel Sinir Ağları (CNN)
-- Transfer Learning (MobileNetV2)
-- TensorFlow / Keras
-- Görüntü ön işleme ve normalizasyon
-- Veri artırma (Data Augmentation)
-- İnce ayar (Fine-tuning)
+Bu projede Konvolüsyonel Sinir Ağları (CNN) kullanılmıştır. CNN’ler, görüntülerdeki kenar, doku ve şekil gibi uzamsal özellikleri otomatik olarak öğrenebilme yeteneğine sahiptir.
+
+Neden MobileNetV2?
+
+Literatürde sık kullanılan VGG ve ResNet gibi modeller yüksek doğruluk sunsa da, bu modeller:
+
+Daha fazla parametre içerir
+
+Daha yüksek hesaplama maliyeti gerektirir
+
+Bu projede ise:
+
+Daha hafif
+
+Daha hızlı
+
+CPU üzerinde çalışabilir
+
+bir mimari tercih edilmiştir. Bu nedenle MobileNetV2 seçilmiştir.
 
 ---
 
 ## 🏋️ Model Eğitimi
 
-- Giriş boyutu: 224 × 224 RGB
-- Optimizasyon algoritması: Adam
-- Kayıp fonksiyonu: Categorical Cross-Entropy
-- Başarı metriği: Accuracy
-- Eğitim ortamı: CPU
+Model eğitimi aşağıdaki adımlarla gerçekleştirilmiştir:
+
+Görüntüler 224×224 boyutuna yeniden ölçeklendirilmiştir
+
+Piksel değerleri [0,1] aralığına normalize edilmiştir
+
+MobileNetV2 tabanı dondurulmuş (freeze) şekilde kullanılmıştır
+
+Üstüne özel sınıflandırıcı katmanlar eklenmiştir
+
+Categorical Cross-Entropy kayıp fonksiyonu
+
+Adam optimizasyon algoritması kullanılmıştır
+
+Eğitim süreci sırasında doğruluk (accuracy) ve kayıp (loss) değerleri izlenmiştir.
 
 ---
 
 ## 📈 Model Değerlendirme
 
-Model performansı aşağıdaki metrikler kullanılarak değerlendirilmiştir:
-- Doğruluk (Accuracy)
-- Precision, Recall, F1-Score
-- Confusion Matrix
+Model performansı, daha önce hiç görülmemiş test veri seti üzerinde değerlendirilmiştir.
 
-Elde edilen sonuçlar, modelin genel olarak başarılı olduğunu ancak bazı sınıflar (özellikle DRUSEN) arasında görsel benzerlik nedeniyle karışmalar yaşandığını göstermektedir.
+Elde Edilen Sonuçlar:
+
+Test Accuracy: 0.7097
+
+Macro F1 Score: 0.6843
+
+Weighted F1 Score: 0.6843
+
+Ayrıca sınıf bazlı performans değerlendirmesi için:
+
+Confusion Matrix
+
+Precision / Recall / F1-score
+
+hesaplanmış ve görselleştirilmiştir.
+
+Sonuçlar, modelin genel olarak sınıfları ayırt edebildiğini ancak bazı sınıflar arasında (özellikle benzer patolojik yapılar içeren sınıflarda) karışmalar yaşanabildiğini göstermektedir.
 
 ---
 
@@ -93,6 +131,20 @@ Bu proje **akademik amaçlıdır**.
 Geliştirilen sistem bir **karar destek aracıdır** ve **klinik tanı yerine geçmez**.
 
 ---
+## Genel Değerlendirme ve Sonuç
+
+Bu proje kapsamında, derin öğrenme teknikleri kullanılarak retina hastalıklarının otomatik sınıflandırılması başarıyla gerçekleştirilmiştir. Elde edilen sonuçlar, CNN tabanlı modellerin tıbbi görüntü analizinde etkili bir şekilde kullanılabileceğini göstermektedir.
+
+Proje, hem teorik bilgilerin pratiğe dökülmesi hem de gerçek bir problem üzerinde çalışılması açısından önemli kazanımlar sağlamıştır. Gelecek çalışmalarda:
+
+Daha ileri fine-tuning
+
+Farklı mimarilerin karşılaştırılması
+
+Daha kapsamlı klinik veri kullanımı
+
+ile model performansının daha da artırılabileceği düşünülmektedir.
+ 
 
 ## 🚀 Çalıştırma Adımları
 
