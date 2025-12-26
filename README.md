@@ -30,17 +30,17 @@ Projede kullanılan veri seti, Kaggle platformunda yayımlanan OCT2017 veri seti
 
 Veri Seti Özellikleri:
 
-Toplam 80.000+ eğitim görüntüsü
+- Toplam 80.000+ eğitim görüntüsü
 
 4 sınıf:
 
-CNV (Koroidal Neovaskülarizasyon)
+- CNV (Koroidal Neovaskülarizasyon)
 
-DME (Diyabetik Makula Ödemi)
+- DME (Diyabetik Makula Ödemi)
 
-DRUSEN
+- DRUSEN
 
-NORMAL
+- NORMAL
 
 Ayrılmış train / validation / test klasör yapısı
 
